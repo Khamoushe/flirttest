@@ -1,0 +1,42 @@
+/**
+# FlirtAssist – MVP Setup
+
+## 1) Create project
+```bash
+npx create-expo-app flirtassist -t expo-template-blank-typescript
+cd flirtassist
+```
+
+## 2) Add deps
+```bash
+npm i @react-native-async-storage/async-storage @react-navigation/native @react-navigation/native-stack react-native-safe-area-context react-native-screens nativewind clsx zod expo-image-picker expo-media-library expo-image-manipulator expo-status-bar
+npm i -D tailwindcss @babel/core typescript eslint
+```
+
+## 3) Tailwind / NativeWind
+- Add `babel.config.js` with `nativewind/babel` plugin.
+- Add `tailwind.config.js` (see above) and create `global.css` if using className on web (optional).
+
+## 4) Permissions (Android)
+- Expo will prompt for Photos/Media. Ensure `READ_MEDIA_IMAGES` in `app.json`.
+
+## 5) Make.com Webhook
+- Create a custom webhook in Make.
+- In the scenario: HTTP → (optional) OCR module → OpenAI (GPT‑4o‑mini) → Return JSON `{ suggestions: string[], ocrText?: string, title?: string }`.
+- Paste the webhook URL into `src/lib/api.ts`.
+
+## 6) Run
+```bash
+npm run start
+```
+
+## OCR Integration Notes
+- **Current flow**: user manually picks a Screenshot from gallery. The image (base64) is posted to Make.com which performs OCR + GPT.
+- **Local OCR (later)**: integrate ML Kit or Tesseract with a bare RN app (not Expo managed). Replace `localOcrExtract` and switch API to send text only.
+- **Auto-detect screenshots (later)**: implement a native Android MediaStore observer (ContentObserver) service; not available in Expo managed. Stubbed in TODOs.
+
+## Data Model & Sync
+- Local-first via AsyncStorage (`src/lib/storage.ts`).
+- Optional: in Make.com, push threads to Supabase/Firebase; add a thin sync layer later.
+
+*/
