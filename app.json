@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "FlirtAssist",
+    "slug": "flirtassist",
+    "scheme": "flirtassist",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": { "image": "./assets/splash.png", "resizeMode": "contain", "backgroundColor": "#0f172a" },
+    "updates": { "fallbackToCacheTimeout": 0 },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.nexure.flirtassist",
+      "permissions": ["READ_MEDIA_IMAGES"],
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#0f172a" }
+    }
+  }
+}
